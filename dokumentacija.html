@@ -1,0 +1,205 @@
+<html lang="en">
+    <head>
+        <title>eETNO</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/main.css" rel ="stylesheet" type="text/css"/>
+
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <script src='js/bootstrap.js' type='text/javascript' charset='utf-8'></script>
+
+    </head>
+
+<body>
+
+<secction>
+	<div class="container">
+		<h1> DOKUMENTACIJA </h1>
+		<hr>
+		<div class="row">
+                <div class="col-md-12">
+                	<h3>a) Opis projektnog zadataka eEtno</h3>
+
+					<h3>Kratak opis projekta:</h3>
+					<p>
+					Sustav služi za katalogizaciju i kreiranje repozitorija materijala o dijalektu/ima, arhaičnim riječima i tradicionalnim običajima nekog kraja. Svaki od unosa može biti dodatno opisan sa vanjskim resursima poput  wiki  unosa,  slike  ili  galerije  slike  te  audio  zapisa  (koji  se  mogu  naknadno  pregledavati  i pretraživati). 
+					</p>
+					<h3>Uloge:</h3>
+					<ul>
+						<li>Neregistrirani korisnik</li>
+						<li>Etnograf (Registrirani korisnik)</li>
+						<li>Moderator regije</li>
+						<li>Administrator</li>
+					</ul>
+					<h3>Detaljne upute:</h3>
+					
+						<h4>Administrator</h4> 
+						<ul>
+							<li>Kreira regije čiji artefakti se skupljaju te svakoj regiji dodaje moderatore. </li>
+							<li>Administrator vidi statistiku korištenja sustava, pogrešnih/ispravnih prijava, po korisnicima i vremenskom periodu (od - do). </li>
+							<li>Definira tipove unosa koji su mogući (riječ i njeno značenje, slika predmeta, audio zapis, …). </li>
+							<li>Vidi popis svih odobrenih zapisa i šalje mail svim korisnicima  čiji unosi su odobreni od strane moderatora.</li>
+						</ul>
+						<h4>Moderator </h4>
+						<ul>
+							<li>Svaki moderator regije može odobriti ili  odbaciti  zapis podataka o artefaktu  u toj regiji.  Tek nakon odobrenja od strane moderatora unos postaje vidljiv ostalim korisnicima. </li>
+							<li>Prilikom  odobravanja  ukoliko  se  radi  o  unosu  multimedijalnog  podatka  (ton,  galerije  slika (min 3)), obavezno je dodavanje samog multimedijalnog resursa. </li>
+							<li>Moderator može vidjeti popis najaktivnijih korisnika, zadnjih N  zahtjeva.  Korisnike koji unose netočne podatke  u njemu dodijeljenoj regiji može blokirati unos. </li>
+							<li>Moderator  vidi  statistiku  unosa  po  korisnicima  i  tipu  artefakta,  artefakti  po  regijama.  I  svi pregledi se baziraju na vremenskom periodu (od - do).</li>
+						</ul>	
+						<h4>Registrirani korisnik</h4>
+						<ul>
+							<li>Može dodavati zapise u svaku regiju. Svaki zapis je opisan nazivom, sadržajem. </li>
+							<li>Svaki od unosa je dodijeljen  mjestu unutar regije. Mjesta se odabiru sa popisa svih dostupnih iz  baze.  Ukoliko  navedeno  mjesto  ne  postoji  u  bazi,  ono  se  automatski  dodaje  prilikom odobravanja unosa od strane moderatora. </li>
+							<li>Vidi statistiku svojih unosa zapisa po regiji.</li>
+						</ul>
+						<h4>Neregistrirani korisnik</h4>
+						<ul> 
+							<li>Može vidjeti popis regija i nazive unosa u svaku od regija. </li>
+						</ul>
+						<h3>b)ERA model</h3>
+						<img src="./upload/era.JPG">
+						<h3>c)Popis i opis skripata, mapa mjesta</h3>
+						<ul>
+							<div class="table-responsive">
+								<table  class="table">
+									<thead>
+										<tr>
+											<th>Popis</th>
+											<th>Opis</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Aktivacija.php</td>
+											<td>Skripta za aktivaciju korisnika</td>
+										</tr>
+										<tr>	
+											<td>Artefacts.php</td>
+											<td>Skripta za dodavanja, mijenjanja i ažuriranje artefakata</td>
+										</tr>
+										<tr>
+											<td>Check_email.php</td>
+											<td>Skripta za provjeru da li je email zauzet kod registracije</td>
+										</tr>
+										<tr>
+											<td>Check_user.php</td>
+											<td>>Skripta za provjeru da li je username zauzet kod registracije<</td>
+										</tr>
+										<tr>
+											<td>Config.php</td>
+											<td>Skripta za konfiguriranje sustava</td>
+										</tr>
+										<tr>
+											<td>Log.php</td>
+											<td>Skripta za bilježenje logova</td>
+										</tr>
+										<tr>
+											<td>Odjava.php</td>
+											<td>Skripta za odjavu, uništavanje cookia i sesiona</td>
+										</tr>
+										<tr>
+											<td>Places.php</td>
+											<td>Skripta za dodavanje mjesta</td>
+										</tr>
+										<tr>
+											<td>Prijava.php</td>
+											<td>Skriptaz autentikaciju korisnika</td>
+										</tr>
+										<tr>
+											<td>Region.php</td>
+											<td>Skripta za dodavanje i mijenjanje regija</td>
+										</tr>
+										<tr>
+											<td>Registracija.php</td>
+											<td>Skripta za registraicju novi korisnika</td>
+										</tr>
+										<tr>
+											<td>Reset.php</td>
+											<td>Skripta za resitiranje lozinke korisnika</td>
+										</tr>
+										<tr>
+											<td>Statistics.php</td>
+											<td>Skripta za bilježenje statistike o korisnicima</td>
+										</tr>
+										<tr>
+											<td>Unblock.php</td>
+											<td>Skripta za odblokiranje korisnika</td>
+										</tr>
+										<tr>
+											<td>Update_artefact.php</td>
+											<td>Skripta za ažuriranje artifekata, tj odboreno / neodobreno</td>
+										</tr>
+										<tr>
+											<td>Virttime.php</td>
+											<td>Skripta za upravljanje virtualnim vremenom</td>
+										</tr>
+										<tr>
+											<td>Admin.handlebars</td>
+											<td>Genriranje html programskog koda za određenu grupu korisnika</td>
+										</tr>
+										<tr>
+											<td>Etnograf.handlebars</td>
+											<td>Genriranje html programskog koda za određenu grupu korisnika</td>
+										</tr>
+										<tr>
+											<td>Moderator.handlebars</td>
+											<td>Genriranje html programskog koda za određenu grupu korisnika</td>
+										</tr>
+										<tr>
+											<td>Post_aktviacija.handlebars</td>
+											<td>Genriranje html programskog koda za greške kod aktivacije</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</ul>
+						<h3>Navigacijski dijagram</h3>
+						<img src="./upload/site-diagram.jpg">
+							</li>
+						</ul>
+						<h3>d)Popis i opis korištenih tehnologija i alata</h3>
+						<ul>
+							<li>AngularJS – javascript framework</li>
+							<li>RedBeans – opensource PHP ORM alat</li>
+							<li>Sublime text 2 - texteditor</li>
+							<li>Creately.com - izrada mape mjesta i navigacijskom dijagrama</li>
+							<li>JQueryUI - DOM manipulacija</li>
+							<li>Bootstrap -  front-end framework</li>
+							<li>Handlebars - PHP rendering framwork</li>
+							<li>ng-grid - Angular Data Grid</li>
+							<li>blueimp- Galerija slika </li>
+						</ul>
+						<h3>e)Popis i opis tuđih vanjskih modula / biblioteka i njihovo korištenje u skriptama i sl.</h3>
+						<ul>
+							<li>RedBeans – opensource PHP ORM alat</li>
+							<li>Handlebars - PHP rendering framwork</li>
+							<li>Google Fonts</li>
+						</ul>
+
+                	<hr>
+                </div>
+        </div>
+    </div>
+</section>
+</body>
+      <footer>
+            <div id="footer">
+                <div class="container">
+                        <address>
+                            <strong>Hrvoje Orejaš</strong><br>
+                            Kontaktirajte me: <a href="mailto:hrorejas@foi.hr" >hrorejas@foi.hr</a>
+                        </address>
+                        <p> Sva prava pridržana, Web dizajn i programiranje, 2014 </p>
+                        <a href="">
+                            <img width="88" height="31" class="validator" src="img/validator.png" alt="validator"/>
+                        </a>
+                        <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                            <img width="88" height="31" class="validator" src="http://jigsaw.w3.org/css-validator/images/vcss-blue"      alt="Valid CSS!" />
+                        </a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

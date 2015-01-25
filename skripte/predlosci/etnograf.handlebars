@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+  <html lang='en'>
+      <head>
+          <title>eEtno</title>
+          <meta charset='UTF-8'>
+          <meta name='viewport' content='width=device-width'>
+          <link href='../../../css/bootstrap.min.css' rel='stylesheet' type='text/css'/>
+          <link href='../../../css/main.css' rel ='stylesheet' type='text/css'/>
+          <link rel='stylesheet' href='../../../css/blueimp-gallery.css'>
+          <link rel='stylesheet' href='../../../css/blueimp-gallery-indicator.css'>
+          <link rel='stylesheet' href='../../../css/blueimp-gallery-video.css'>
+
+          <link rel='stylesheet' href='//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css'>
+
+          <script src='../../../js/jquery-2.1.1.min.js'></script>
+          <script src='../../../js/bootstrap.js' type='text/javascript' charset='utf-8'></script>
+          <script src='../../../js/angular.js' type='text/javascript' charset='utf-8'></script>
+          <script src='../../../js/file_upload.js' type='text/javascript' charset='utf-8'></script>
+          <script src='http://code.jquery.com/ui/1.10.4/jquery-ui.js'></script>
+
+
+
+          <script src='../../../js/blueimp-helper.js'></script>
+          <script src='../../../js/blueimp-gallery.js'></script>
+          <script src='../../../js/blueimp-gallery-fullscreen.js'></script>
+          <script src='../../../js/blueimp-gallery-indicator.js'></script>
+          <script src='../../../js/blueimp-gallery-video.js'></script>
+          <script src='../../../js/jquery.blueimp-gallery.js'></script>
+
+      </head>
+
+      <body data-ng-app='app'>
+          <header>
+
+          </header>
+          <div id='blueimp-gallery' class='blueimp-gallery'>
+              <div class='slides'></div>
+              <h3 class='title'></h3>
+              <a class='prev'>‹</a>
+              <a class='next'>›</a>
+              <a class='close'>×</a>
+              <a class='play-pause'></a>
+              <ol class='indicator'></ol>
+          </div>
+          <nav class='navbar navbar-default' role='navigation'>
+              <div class='container'>
+                  <ul class='nav navbar-nav'>
+                      <li><a href='../etnograf/index.php'>eEtno</a></li>
+                  </ul>
+                  <ul class='nav navbar-nav navbar-right'>
+                      <li><p class="nav navbar-text">Prijavljeni kao {{ username }}</p>
+                  </ul>
+              </div>
+          </nav>
+
+
+          <section>
+              <div class='container'  data-ng-controller='main'>
+                  <div class='row'>
+                     <div class="col-md-12">
+                      <div class="nav-row">
+                          <div class="col-md-2">
+                            <a href data-ng-click="add_artefact()">
+                              <span class="glyphicon glyphicon-folder-close" ></span>
+                              <p>Dodaj artefakt</p>
+                            </a>
+                          </div>
+          
+                          <div class="col-md-2" >
+                            <a href  data-ng-click="show_filters()">
+                              <span class="glyphicon glyphicon-calendar"></span>
+                              <p>Ukljuci filtere</p>
+                            </a>
+                          </div>
+                        
+                        <div class="col-md-2">
+                          <span class="glyphicon glyphicon-globe"></span>
+                          <p>Korisnik</p>
+                        </div>
+                        <div class="col-md-2">
+                          <a href='../moderator/index.php'>
+                            <span class="glyphicon glyphicon-leaf"></span>
+                            <p>Moderatori</p>
+                          </a>
+                        </div>
+                        <div class="col-md-2">
+                          <a href='../admin/index.php'>
+                            <span class="glyphicon glyphicon-time"></span>
+                            <p>Administratori</p>
+                          </a>
+                        </div>
+                        <div class="col-md-2">
+                          <a href='../../odjava.php'>
+                            <span class="glyphicon glyphicon-bell"></span>
+                            <p>Odjava</p>
+                          </a>
+                        </div>
+                      </div>
+                      </div>
+
+                  </div>
+                  <hr>
+
+                  <div id='notifications' class='row'>
+
+                  </div>
+                  <div class='row'>
+                      <div class='col-md-12'>
+                          <div class='modal fade' id='add_artefact' tabindex=''-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+                            <div class='modal-dialog' >
+                              <form id='upload_form' enctype='multipart/form-data' method='post' action='../../../skripte/artefacts.php'>
+                                <div class='modal-content'>
+                                  <div class='modal-header'>
+                                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                                    <h4 class='modal-title'>Dodaj Artefakt</h4>
+                                  </div>
+                                  <div class='modal-body'>
+                                    <div class='row'>
+                                      <div class='col-md-6'>
+                                        <select placeholder='Regija' class='form-control' data-ng-model='artefact.region' data-ng-options='region.name for region in regions track by region.id' name='region'></select>
+                                        <br>
+                                        
+                                        <input  placeholder='Mjesto' class='form-control' type='text' id='place' name='place' value='' data-ng-model='artefact.place'>
+                                        <br>
+                                        
+                                        <input  placeholder='Naziv' class='form-control' type='text' id='name'  name='name' value='' data-ng-model='artefact.name'>
+                                        <br>
+                                      </div>
+                                      <div class='col-md-6'>
+                                        <textarea placeholder='Sadrzaj' class='form-control' name='content' rows='8' cols='40' data-ng-model='artefact.content'></textarea>
+                                      <br>                                    
+                                      </div>
+                                    </div> 
+                                    
+                                    
+                                    <input class='form-control' type='file' name='file' value='' >
+                                  </div>
+                                  <div class='modal-footer'>
+                                    <button type='button' class='btn btn-default' data-dismiss='modal'>Zatvori</button>
+                                    <button type='submit' class='btn btn-primary'>Spremi</button>
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </form>
+                            </div><!-- /.modal-dialog -->
+                          </div><!-- /.modal -->
+
+                          <div class='panel panel-default filterable'>
+                              <div class="panel-heading">
+                                  <h3 class='panel-title'>Artefakti</h3>
+                                  <div class='pull-right'>
+                                      <button class='btn btn-info btn-xs btn-filter'><span class='glyphicon glyphicon-filter'></span> Filter</button>
+                                  </div>
+                              </div>
+                              <div class='panel-body'>
+
+                                <table class='table table-striped'>
+                                  <thead>
+                                    <tr class="filters">
+                                        <th><input type="text" class="form-control" placeholder="Regija" disabled></th>
+                                        <th><input type="text" class="form-control" placeholder="Mjesto" disabled></th>
+                                        <th><input type="text" class="form-control" placeholder="Naziv" disabled></th>
+                                        <th><input type="text" class="form-control" placeholder="Sadrzaj" disabled></th>
+                                        <th><input type="text" class="form-control" placeholder="Odobreno" disabled></th>
+                                    </tr>
+                                    <!--<tr>
+                                      <td>
+                                        <b>Regija</b>
+                                      </td>
+                                      <td>
+                                        <b>Mjesto</b>
+                                      </td>
+                                      <td>
+                                        <b>Naziv</b>
+                                      </td>
+                                      <td>
+                                        <b>Sadrzaj</b>
+                                      </td>
+                                      <td>
+                                        <b>Odobreno</b>
+                                      </td>
+                                      <td>
+                                        <b>Slika</b>
+                                      </td>
+                                    </tr>-->
+                                  </thead>
+                                  <tbody id='links'>
+                                    <tr data-ng-repeat='item in artefacts | offset: currentPage*itemsPerPage | limitTo: itemsPerPage'>
+                                      <td data-ng-bind-html='render_region(item.region)'>
+                                      </td>
+                                      <td>
+                                        &#123;&#123; item.place &#125;&#125;
+                                      </td>
+                                      <td>
+                                        &#123;&#123; item.name &#125;&#125;
+                                      </td>
+                                      <td>
+                                        &#123;&#123; item.content &#125;&#125;
+                                      </td>
+                                      <td>
+                                        &#123;&#123; item.approved &#125;&#125;
+                                      </td>
+                                      <td>
+                                        <a href='../../../&#123;&#123; item.url_file &#125;&#125;' title='&#123;&#123; item.name &#125;&#125;'>
+                                          <img src='../../../&#123;&#123; item.url_file &#125;&#125;' alt='' width='100' />
+                                        </a>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                  <tfoot>
+                                    <td colspan='7'>
+                                      <div class='pagination'>
+                                        <ul class='list-inline'>
+                                          <li data-ng-class='prevPageDisabled()'>
+                                            <a href data-ng-click='prevPage()'>« Prev</a>
+                                          </li>
+                                          <li data-ng-repeat='n in range()'
+                                            data-ng-class='{active: n == currentPage}' ng-click='setPage(n)'>
+                                            <a href='#'>&#123;&#123; n + 1 &#125;&#125;</a>
+                                          </li>
+                                          <li data-ng-class='nextPageDisabled()'>
+                                            <a href data-ng-click='nextPage()'>Next »</a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </td>
+                                  </tfoot>
+                                </table>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+           </section>
+
+
+          <footer>
+              <div id='footer'>
+                  <div class='container'>
+                          <address>
+                              <strong>Hrvoje Orejaš</strong><br>
+                              Kontaktirajte me: <a href='mailto:hrorejas@foi.hr' >hrorejas@foi.hr</a>
+                          </address>
+                          <p> Sva prava pridržana, Web dizajn i programiranje, 2014 </p>
+                          <a href='http://validator.w3.org/check?uri=http%3A%2F%2Farka.foi.hr%2F~hrorejas%2FeEtno%2Fregistracija.html'>
+                              <img width='88' height='31' class='validator' src='../../../img/validator.png' alt='validator'/>
+                          </a>
+
+                          <a href='http://jigsaw.w3.org/css-validator/check/referer'>
+                              <img width='88' height='31' class='validator' src='http://jigsaw.w3.org/css-validator/images/vcss-blue'
+                              alt='Valid CSS!' />
+                          </a>
+
+                  </div>
+              </div>
+          </footer>
+          <script src='../../../js/user.js' type='text/javascript' charset='utf-8'></script>
+      </body>
+  </html>

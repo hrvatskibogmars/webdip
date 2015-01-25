@@ -1,0 +1,4 @@
+AuthType Basic
+AuthUserFile /var/www/WebDiP/2013_projekti/WebDiP2013_057/zasticeno/.htpasswd
+AuthName "Administracija sustava"
+Require valid-user
